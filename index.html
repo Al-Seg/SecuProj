@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CSI 4460/5460 cybersecurity research project about detecting Nmap network scans using Wireshark traffic analysis.">
+  <meta name="theme-color" content="#0a1423">
+  <title>Network Scan Detection | CSI 4460/5460</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="wordmark" href="index.html" aria-label="Network Scan Detection home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M5 23V9M12 23V15M19 23V6M26 23V12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M4 27H28" stroke="currentColor" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span>SCAN<span class="brand-muted">/</span>DETECT</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#documents">Documents</a>
+      </nav>
+      <a class="nav-button" href="#documents">Project files <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-main">
+        <div class="eyebrow"><span class="live-dot" aria-hidden="true"></span> CSI 4460/5460 <span class="eyebrow-divider"></span> FALL 2026</div>
+        <h1 id="hero-title">Detecting <span class="accent">Network Scanning</span> Activity</h1>
+        <p class="hero-subtitle">Using Nmap and Wireshark to study TCP scan patterns and explore ways to distinguish suspicious scanning from normal network traffic.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="proposal.html">Read the proposal <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="#method">Explore the approach <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="byline"><span class="byline-label">RESEARCHER</span><strong>Alexandro Segura</strong><span class="byline-separator" aria-hidden="true"></span><span>Oakland University</span></div>
+      </div>
+      <div class="hero-visual" aria-label="Illustration of a network scan analysis workflow">
+        <div class="window-top"><span class="window-dots"><i></i><i></i><i></i></span><span>TRAFFIC ANALYSIS // EXPERIMENT DESIGN</span><span class="window-tag">01</span></div>
+        <div class="visual-body">
+          <div class="visual-topline"><span>Network activity</span><span class="online">● RESEARCH PLAN</span></div>
+          <div class="traffic-chart" aria-hidden="true">
+            <div class="grid-lines"></div>
+            <div class="chart-bars">
+              <i style="height:27%"></i><i style="height:39%"></i><i style="height:22%"></i><i style="height:42%"></i><i style="height:30%"></i><i style="height:47%"></i><i style="height:25%"></i><i style="height:38%"></i><i style="height:66%"></i><i style="height:88%"></i><i style="height:73%"></i><i style="height:96%"></i><i style="height:76%"></i><i style="height:57%"></i><i style="height:45%"></i><i style="height:70%"></i><i style="height:44%"></i><i style="height:26%"></i><i style="height:36%"></i><i style="height:21%"></i>
+            </div>
+            <div class="chart-caption">illustrative traffic pattern · not experimental data</div>
+          </div>
+          <div class="visual-rows"><div><span class="mini-icon">01</span><span>Capture packets</span><strong>Wireshark</strong></div><div><span class="mini-icon">02</span><span>Generate scans</span><strong>Nmap</strong></div><div><span class="mini-icon">03</span><span>Identify indicators</span><strong>TCP flags + timing</strong></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="overview" aria-labelledby="overview-title">
+      <div class="section-heading"><p class="kicker">01 / OVERVIEW</p><h2 id="overview-title">Why this matters</h2><p>Port scanning is often a legitimate administrative task, but it can also be part of an attacker's reconnaissance. Looking at packet behavior can help identify patterns worth investigating.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card"><div class="feature-number">01</div><h3>Research question</h3><p>Which traffic patterns can help distinguish Nmap TCP scans from ordinary connections, and how reliably can simple rules detect them?</p></article>
+        <article class="feature-card"><div class="feature-number">02</div><h3>What will be compared</h3><p>Normal network activity, TCP connect scans, and SYN scans in a controlled test environment.</p></article>
+        <article class="feature-card"><div class="feature-number">03</div><h3>How it will be evaluated</h3><p>Compare packet signatures, detection rates, and false positives to understand the usefulness and limits of the indicators.</p></article>
+      </div>
+    </section>
+
+    <section class="section method-section" id="method" aria-labelledby="method-title">
+      <div class="container method-inner">
+        <div class="section-heading"><p class="kicker">02 / EXPERIMENT PLAN</p><h2 id="method-title">From traffic to evidence</h2><p>The work is organized into four stages. These describe the planned experiments, not completed results.</p></div>
+        <ol class="method-list">
+          <li><div class="step-index">01</div><div><h3>Build a controlled lab</h3><p>Configure an isolated virtual network with an authorized scan source and target.</p></div><span class="step-label">SETUP</span></li>
+          <li><div class="step-index">02</div><div><h3>Capture a baseline</h3><p>Record ordinary TCP activity in Wireshark to establish comparison traffic.</p></div><span class="step-label">BASELINE</span></li>
+          <li><div class="step-index">03</div><div><h3>Run controlled scans</h3><p>Use Nmap TCP connect and SYN scans, and observe ports, TCP flags, responses, and timing.</p></div><span class="step-label">TESTING</span></li>
+          <li><div class="step-index">04</div><div><h3>Compare detection rules</h3><p>Test whether indicators separate scans from baseline traffic, and document false positives.</p></div><span class="step-label">ANALYSIS</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section container" id="timeline" aria-labelledby="timeline-title">
+      <div class="section-heading"><p class="kicker">03 / PROJECT SCHEDULE</p><h2 id="timeline-title">Milestones</h2><p>Key dates from the course guidelines and the updated October 31 announcement.</p></div>
+      <div class="timeline">
+        <div class="milestone"><div class="mile-date">SEP 26</div><div class="mile-track"><span></span></div><div><h3>Proposal &amp; project website</h3><p>Introduce the research question, approach, and project materials.</p></div></div>
+        <div class="milestone"><div class="mile-date highlight">OCT 31</div><div class="mile-track"><span></span></div><div><h3>First progress report <span class="soft-chip">Deadline extended</span></h3><p>Share research and planning progress, initial work, and next steps.</p></div></div>
+        <div class="milestone"><div class="mile-date">NOV 14</div><div class="mile-track"><span></span></div><div><h3>Second progress report</h3><p>Report experiment progress and any early observations.</p></div></div>
+        <div class="milestone"><div class="mile-date">DEC 12</div><div class="mile-track"><span></span></div><div><h3>In-class presentation</h3><p>Present methods and findings.</p></div></div>
+        <div class="milestone"><div class="mile-date">DEC 13</div><div class="mile-track"><span></span></div><div><h3>Final research paper</h3><p>Submit the completed analysis by 1:00 PM.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section docs-section" id="documents" aria-labelledby="documents-title">
+      <div class="container">
+        <div class="section-heading"><p class="kicker">04 / PROJECT DOCUMENTS</p><h2 id="documents-title">Research archive</h2><p>The project materials will be published here as they become available.</p></div>
+        <div class="docs-list">
+          <a class="doc-row" href="proposal.html"><span class="doc-symbol" aria-hidden="true">↗</span><span class="doc-info"><strong>Project proposal</strong><small>Problem statement, challenges, research plan and milestones</small></span><span class="doc-status available">Read online</span><span class="doc-arrow" aria-hidden="true">↗</span></a>
+          <div class="doc-row pending"><span class="doc-symbol" aria-hidden="true">○</span><span class="doc-info"><strong>First progress report</strong><small>Due October 31, 2026 · Add your final report link here</small></span><span class="doc-status">In preparation</span></div>
+          <div class="doc-row pending"><span class="doc-symbol" aria-hidden="true">○</span><span class="doc-info"><strong>Second progress report</strong><small>Scheduled for November 14, 2026</small></span><span class="doc-status">Upcoming</span></div>
+          <div class="doc-row pending"><span class="doc-symbol" aria-hidden="true">○</span><span class="doc-info"><strong>Presentation slides</strong><small>Scheduled for December 12, 2026</small></span><span class="doc-status">Upcoming</span></div>
+          <div class="doc-row pending"><span class="doc-symbol" aria-hidden="true">○</span><span class="doc-info"><strong>Final research paper</strong><small>Due December 13, 2026 at 1:00 PM</small></span><span class="doc-status">Upcoming</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><div><strong>SCAN/DETECT</strong><span>CSI 4460/5460 · Cybersecurity Research</span></div><p>Alexandro Segura · Oakland University · Fall 2026</p><a href="#main">Back to top ↑</a></div></footer>
+</body>
+</html>
