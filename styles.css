@@ -38,11 +38,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-bottom: 1px solid var(--line-soft);
   background: rgba(11,12,15,.92);
 }
-.header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 78px; gap: 25px; }
-.brand { display: inline-flex; align-items: center; gap: 13px; font-size: 13px; font-weight: bold; letter-spacing: .08em; white-space: nowrap; }
-.brand-mark { width: 32px; height: 32px; border: 1px solid #777b81; display: grid; place-items: center; font-size: 12px; letter-spacing: -.08em; color: #f3f3f3; }
-.brand-title { white-space: nowrap; }
-.brand-title span { color: #777b81; margin: 0 2px; }
+.header-inner { display: flex; align-items: center; justify-content: flex-end; min-height: 78px; gap: 25px; }
 .site-nav { display: flex; align-items: center; gap: 6px; }
 .site-nav a {
   display: inline-flex; align-items: center; justify-content: center;
@@ -114,12 +110,10 @@ main { min-height: calc(100vh - 158px); }
 .report-topics h3 { color: #e2e4e6; margin: 0 0 14px; font-size: 12px; text-transform: uppercase; letter-spacing: .11em; }
 .report-topics ul { margin: 0; padding-left: 18px; color: #a7aab0; font-size: 13px; line-height: 2; }
 .site-footer { border-top: 1px solid var(--line-soft); }
-.footer-inner { min-height: 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--dim); font-size: 12px; }
-.footer-inner strong { color: #c9cbd0; font-size: 12px; letter-spacing: .06em; }
+.footer-inner { min-height: 80px; display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 12px; color: var(--dim); font-size: 12px; }
 @media (max-width: 780px) {
   .wrap { width: min(var(--max), calc(100% - 40px)); }
   .header-inner { gap: 10px; min-height: 70px; }
-  .brand { font-size: 11px; gap: 8px; }
   .site-nav a { font-size: 12px; padding: 6px 10px; }
   .home-intro { padding-block: 85px 90px; }
   .home-intro h1 { font-size: clamp(42px, 7vw, 60px); }
@@ -132,8 +126,7 @@ main { min-height: calc(100vh - 158px); }
   .pdf-frame { height: 70vh; min-height: 470px; }
 }
 @media (max-width: 520px) {
-  .header-inner { align-items: flex-start; flex-wrap: wrap; padding-top: 16px; padding-bottom: 13px; }
-  .brand { width: 100%; }
+  .header-inner { align-items: center; flex-wrap: nowrap; padding-top: 10px; padding-bottom: 10px; }
   .site-nav { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
   .site-nav a { border: 1px solid #34363d; }
   .home-intro { padding-block: 72px 76px; }
